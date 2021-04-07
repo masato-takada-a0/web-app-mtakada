@@ -33,13 +33,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(
-  session({
-    secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-  })
+ auth({
+   secret: SESSION_SECRET,
+   auth0Logout: true,
+   baseURL: APP_URL,
+ })
 );
-
 
 
 const expenses = [
